@@ -22,4 +22,14 @@ RSpec.describe "Users", type: :request do
       expect(json.dig(:errors, :email_address)).to be_present
     end
   end
+
+  describe "#destroy" do
+    it "will delete the auth_token from the cookie" do
+      user = create(:user)
+      sign_in(user)
+      delete user_path("current_user")
+
+      expect(cookies[:auth_token]).to be_blank
+    end
+  end
 end
