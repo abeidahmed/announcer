@@ -15,6 +15,7 @@ gem "bootsnap", ">= 1.4.4", require: false
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem 'shoulda-matchers', '~> 4.5'
   gem 'rspec-rails', '~> 4.0', '>= 4.0.2'
 end
 
