@@ -43,5 +43,12 @@ RSpec.describe User, type: :model do
 
       expect(user.full_name).to eq("John Doe Howard")
     end
+
+    it "generates an auth_token at random before creating the user" do
+      user.auth_token = nil
+      user.save!
+
+      expect(user.auth_token).not_to be_nil
+    end
   end
 end

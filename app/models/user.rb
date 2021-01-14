@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   before_validation :strip_email_address, :strip_full_name
   before_save :lowercase_email_address
+  before_create :generate_auth_token
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
@@ -28,5 +29,16 @@ class User < ApplicationRecord
 
   def lowercase_email_address
     self.email_address = email_address.to_s.downcase
+  end
+
+  def generate_auth_token
+    generate_token(:auth_token)
+  end
+
+  def generate_token(column)
+    loop do
+      self[column] = SecureRandom.urlsafe_base64
+      break unless User.exists?(column => self[column])
+    end
   end
 end
