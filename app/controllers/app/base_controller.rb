@@ -1,2 +1,2 @@
-class BaseController < ApplicationController
+class App::BaseController < ApplicationController
 end
