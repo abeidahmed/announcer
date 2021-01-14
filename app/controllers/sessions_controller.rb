@@ -8,4 +8,9 @@ class SessionsController < ApplicationController
       render json: { errors: { invalid: ["credentials"] } }, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @current_user = nil
+    sign_out_user
+  end
 end

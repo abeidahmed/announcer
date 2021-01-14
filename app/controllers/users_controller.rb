@@ -9,11 +9,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @current_user = nil
-    sign_out_user
-  end
-
   private
 
   def user_params
