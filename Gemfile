@@ -9,25 +9,36 @@ gem "puma", "~> 5.0"
 gem "sass-rails", ">= 6"
 gem "webpacker", "~> 5.0"
 gem "bcrypt", "~> 3.1.7"
-gem "bootsnap", ">= 1.4.4", require: false
+gem "turbo-rails"
+gem "octicons_helper"
+gem "stripe", "~> 5.28"
+gem "stripe_event", "~> 2.3", ">= 2.3.1"
+gem "pundit", "~> 2.1"
 # gem "redis", "~> 4.0"
 # gem "image_processing", "~> 1.2"
 
+gem "bootsnap", ">= 1.4.4", require: false
+
 group :development, :test do
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem "factory_bot_rails", "~> 6.1"
-  gem "shoulda-matchers", "~> 4.5"
+  gem "capybara", "~> 3.34"
   gem "rspec-rails", "~> 4.0", ">= 4.0.2"
+  gem "shoulda-matchers", "~> 4.4", ">= 4.4.1"
+  gem "factory_bot_rails", "~> 6.1"
+  gem "pundit-matchers", "~> 1.6"
   gem "rubocop", "~> 1.7"
   gem "rubocop-rspec", "~> 2.1"
   gem "rubocop-rails", "~> 2.9", ">= 2.9.1"
+  gem "byebug", platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
+  gem "guard-rspec", "~> 4.7", ">= 4.7.3"
+  gem "better_errors", "~> 2.8", ">= 2.8.3"
+  gem "binding_of_caller", "~> 1.0"
   gem "web-console", ">= 4.1.0"
   gem "rack-mini-profiler", "~> 2.0"
   gem "listen", "~> 3.3"
   gem "spring"
 end
 
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]

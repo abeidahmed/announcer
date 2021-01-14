@@ -36,6 +36,11 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  config.include JsonHelper
+  config.include Features::SessionsHelper
+  config.include Mailers::MailersHelper
+  config.include Requests::SessionsHelper
+
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
