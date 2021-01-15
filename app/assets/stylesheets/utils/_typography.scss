@@ -34,8 +34,17 @@
   }
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  font-weight: $font-weight-semibold !important;
+.h5 {
+  font-size: $h5-size !important;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: $font-weight-medium !important;
 }
 
 // Alignment
