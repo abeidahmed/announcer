@@ -1,7 +1,29 @@
+// Breakpoints
 $breakpoints: (
   xs: 0,
   sm: 640px,
   md: 768px,
   lg: 1024px,
   xl: 1280px,
+);
+
+// Spacer
+$spacer: 8px;
+
+$spacer-0: 0;
+$spacer-1: round($spacer / 2);
+$spacer-2: $spacer ;
+$spacer-3: $spacer * 2;
+$spacer-4: $spacer * 3;
+$spacer-5: $spacer * 4;
+$spacer-6: $spacer * 5;
+
+$spacer-map: (
+  0: $spacer-0,
+  1: $spacer-1,
+  2: $spacer-2,
+  3: $spacer-3,
+  4: $spacer-4,
+  5: $spacer-5,
+  6: $spacer-6,
 );
