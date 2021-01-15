@@ -1,3 +1,5 @@
 class App::AccountSetupsController < App::BaseController
-  def new; end
+  def new
+    skip_authorization
+  end
 end

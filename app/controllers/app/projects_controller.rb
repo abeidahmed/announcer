@@ -1,3 +1,5 @@
 class App::ProjectsController < App::BaseController
-  def index; end
+  def index
+    skip_policy_scope
+  end
 end
