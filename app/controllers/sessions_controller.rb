@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  def new; end
+
   def create
     auth = Authentication.new(params)
 

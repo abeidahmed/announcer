@@ -10,4 +10,11 @@ RSpec.describe "SignUps", type: :feature do
 
     expect(page).to have_current_path(new_app_account_setup_path)
   end
+
+  it "takes the user to sign in page if the Sign in link is clicked" do
+    visit new_user_path
+    click_link "Sign in"
+
+    expect(page).to have_current_path(new_session_path)
+  end
 end

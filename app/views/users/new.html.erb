@@ -21,6 +21,7 @@
     </div>
   <% end %>
   <%= content_for :footer do %>
-    <p class="text-gray text-center">Already have an account? <a href="#" class="h5">Sign in</a></p>
+    <p class="text-gray text-center">Already have an account?
+    <%= link_to "Sign in", new_session_path, class: "h5" %>
   <% end %>
 <% end %>
