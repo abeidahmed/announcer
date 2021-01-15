@@ -81,10 +81,6 @@ input[type='submit'] {
   cursor: pointer;
   font-family: $body-font-family;
   transition: all 150ms ease-in-out;
-
-  &:focus:not([data-focus-visible-added]) {
-    outline: none;
-  }
 }
 
 button:disabled,

@@ -1,0 +1,29 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 5px 16px;
+  font-weight: 500;
+  font-size: $body-font-size;
+  line-height: 20px;
+  cursor: pointer;
+  vertical-align: middle;
+  border: $border;
+  border-radius: $border-radius;
+  background-color: $white;
+  box-shadow: $box-shadow;
+  outline: none;
+
+  &:hover {
+    color: $text-gray;
+  }
+
+  &:focus {
+    box-shadow: $box-shadow-focus;
+  }
+
+  &:active {
+    background-color: $bg-gray;
+  }
+}
