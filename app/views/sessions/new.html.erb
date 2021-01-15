@@ -1,18 +1,19 @@
 <%= render "templates/focused", title: "Sign in to your account" do %>
-  <%= form_with url: sessions_path, class: "box-body" do |form| %>
+  <%= form_with url: sessions_path, data: { controller: "form", action: "turbo:submit-end->form#onError" }, class: "box-body" do |form| %>
     <div class="form-group">
       <%= form.label :email_address %>
-      <%= form.email_field :email_address, class: "form-control" %>
+      <%= form.email_field :email_address, class: "form-control", required: true %>
     </div>
     <div class="form-group">
       <div class="flex items-center justify-between">
         <%= form.label :password %>
-        <a href="#">Forgot password?</a>
+        <a href="#" class="mb-1">Forgot password?</a>
       </div>
-      <%= form.password_field :password, class: "form-control" %>
+      <%= form.password_field :password, class: "form-control", required: true %>
     </div>
+    <%= render "shared/form_error", error_type: "invalid" %>
     <div class="form-group">
-      <%= form.submit "Sign in", class: "btn btn-primary btn-block" %>
+      <%= form.submit "Sign in", data: { form_target: "submitBtn" }, class: "btn btn-primary btn-block" %>
     </div>
   <% end %>
   <%= content_for :footer do %>
