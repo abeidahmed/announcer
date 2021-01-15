@@ -1,5 +1,6 @@
 $justify-contents: (
   center: center,
+  between: space-between,
 );
 
 @each $breakpoint in map-keys($breakpoints) {
@@ -14,3 +15,18 @@ $justify-contents: (
   }
 }
 
+$align-items: (
+  center: center,
+);
+
+@each $breakpoint in map-keys($breakpoints) {
+  $bp-sort: breakpoint-infix($breakpoint);
+
+  @include breakpoint($breakpoint) {
+    @each $prop, $value in $align-items {
+      .#{$bp-sort}items-#{$prop} {
+        align-items: $value !important;
+      }
+    }
+  }
+}
