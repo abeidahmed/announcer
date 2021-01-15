@@ -1,4 +1,6 @@
 class App::BaseController < ApplicationController
+  layout "app"
+
   before_action :authenticate_user
 
   # rubocop:disable Rails/LexicallyScopedActionFilter, Lint/RedundantCopDisableDirective
