@@ -1,0 +1,36 @@
+@each $breakpoint in map-keys($breakpoints) {
+  $bp-sort: breakpoint-infix($breakpoint);
+
+  @include breakpoint($breakpoint) {
+    @each $prop, $value in $spacer-map {
+      .#{$bp-sort}p-#{$prop} {
+        padding: $value !important;
+      }
+
+      .#{$bp-sort}pt-#{$prop},
+      .#{$bp-sort}py-#{$prop} {
+        padding-top: $value !important;
+      }
+
+      .#{$bp-sort}pb-#{$prop},
+      .#{$bp-sort}py-#{$prop} {
+        padding-bottom: $value !important;
+      }
+
+      .#{$bp-sort}pl-#{$prop},
+      .#{$bp-sort}px-#{$prop} {
+        padding-left: $value !important;
+      }
+
+      .#{$bp-sort}pr-#{$prop},
+      .#{$bp-sort}px-#{$prop} {
+        padding-right: $value !important;
+      }
+    }
+  }
+}
+
+.py-9 {
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
+}
