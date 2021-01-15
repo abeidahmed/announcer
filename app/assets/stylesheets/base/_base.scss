@@ -1,0 +1,8 @@
+a {
+  color: $text-indigo;
+  font-weight: $font-weight-medium;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
