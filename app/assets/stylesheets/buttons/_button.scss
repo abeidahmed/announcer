@@ -21,6 +21,7 @@
 
   &:focus {
     box-shadow: $box-shadow-focus;
+    outline: none;
   }
 }
 
