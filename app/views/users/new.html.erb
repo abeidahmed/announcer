@@ -17,7 +17,7 @@
       <%= render "shared/form_error", error_type: "password" %>
     </div>
     <div class="form-group">
-      <%= form.submit "Create account", class: "btn btn-primary btn-block" %>
+      <%= form.submit "Create account", data: { form_target: "submitBtn" }, class: "btn btn-primary btn-block" %>
     </div>
   <% end %>
   <%= content_for :footer do %>
