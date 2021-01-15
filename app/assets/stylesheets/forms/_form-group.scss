@@ -1,0 +1,10 @@
+.form-group {
+  &:not(:first-of-type) {
+    margin-top: 16px;
+  }
+
+  label {
+    margin-bottom: 4px;
+    display: inline-block;
+  }
+}

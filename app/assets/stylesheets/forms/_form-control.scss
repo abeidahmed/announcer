@@ -1,0 +1,20 @@
+.form-control {
+  width: 100%;
+  padding: 5px 12px;
+  border-radius: $border-radius;
+  color: $text-gray-dark;
+  font-size: $body-font-size;
+  line-height: 20px;
+  vertical-align: middle;
+  background-color: $white;
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  outline: none;
+  border: $border;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: $border-indigo;
+    box-shadow: $box-shadow-focus;
+  }
+}
