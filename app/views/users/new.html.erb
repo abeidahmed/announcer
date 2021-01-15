@@ -1,17 +1,24 @@
 <main class="min-h-screen flex justify-center">
-  <div class="box">
-    <%= form_with model: @user do |form| %>
-      <%= form.label :full_name %>
-      <%= form.text_field :full_name %>
-
-      <%= form.label :email_address %>
-      <%= form.email_field :email_address %>
-
-      <%= form.label :password %>
-      <%= form.password_field :password %>
-
-      <%= form.submit "Create account" %>
-    <% end %>
+  <div>
+    <div class="box box--spacious">
+      <%= form_with model: @user, class: "box-body" do |form| %>
+        <div class="form-group">
+          <%= form.label :full_name %>
+          <%= form.text_field :full_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :email_address %>
+          <%= form.email_field :email_address, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :password %>
+          <%= form.password_field :password, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= form.submit "Create account" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </main>
 
