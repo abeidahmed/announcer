@@ -1,33 +1,26 @@
-<main class="min-h-screen flex justify-center bg-gray p-responsive">
-  <div class="w-full py-9">
-    <h1 class="h2 text-center mb-3">Create your account</h1>
-    <div class="max-w-sm w-full mx-auto">
-      <div class="box box--spacious">
-        <%= form_with model: @user, class: "box-body" do |form| %>
-          <div class="form-group">
-            <%= form.label :full_name %>
-            <%= form.text_field :full_name, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= form.label :email_address %>
-            <%= form.email_field :email_address, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= form.label :password %>
-            <%= form.password_field :password, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= form.submit "Create account", class: "btn btn-primary btn-block" %>
-          </div>
-        <% end %>
-      </div>
-      <div class="mt-3">
-        <p class="text-gray text-center">Already have an account? <a href="#" class="font-medium">Sign in</a></p>
-        <div class="mt-5 text-center">
-          <a href="#" class="mr-2 link-gray">Privacy & terms</a>
-          <a href="#" class="link-gray">Contact</a>
-        </div>
-      </div>
+<%= render "templates/focused", title: "Create your account" do %>
+  <%= form_with model: @user, class: "box-body" do |form| %>
+    <div class="form-group">
+      <%= form.label :full_name %>
+      <%= form.text_field :full_name, class: "form-control" %>
     </div>
-  </div>
-</main>
+    <div class="form-group">
+      <%= form.label :email_address %>
+      <%= form.email_field :email_address, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.submit "Create account", class: "btn btn-primary btn-block" %>
+    </div>
+  <% end %>
+  <%= content_for :footer do %>
+    <p class="text-gray text-center">Already have an account? <a href="#" class="font-medium">Sign in</a></p>
+    <div class="mt-5 text-center">
+      <a href="#" class="mr-2 link-gray">Privacy & terms</a>
+      <a href="#" class="link-gray">Contact</a>
+    </div>
+  <% end %>
+<% end %>
