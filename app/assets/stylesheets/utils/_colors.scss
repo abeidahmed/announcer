@@ -7,3 +7,11 @@
 .text-gray {
   color: $text-gray !important;
 }
+
+.link-gray {
+  color: $text-gray !important;
+
+  &:hover {
+    color: $text-indigo !important;
+  }
+}
