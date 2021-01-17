@@ -43,10 +43,5 @@
     padding-left: $spacer-4 !important;
     padding-right: $spacer-4 !important;
   }
-
-  @include breakpoint(lg) {
-    padding-left: $spacer-5 !important;
-    padding-right: $spacer-5 !important;
-  }
 }
 
