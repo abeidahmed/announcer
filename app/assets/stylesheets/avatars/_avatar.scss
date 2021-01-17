@@ -1,0 +1,22 @@
+.avatar {
+  display: inline-flex;
+  border: 0;
+  overflow: hidden;
+}
+
+@mixin avatar-size($size) {
+  height: $size;
+  width: $size;
+}
+
+.avatar-4 {
+  @include avatar-size(24px);
+}
+
+.avatar-5 {
+  @include avatar-size(32px);
+}
+
+.avatar--circle {
+  border-radius: 50%;
+}

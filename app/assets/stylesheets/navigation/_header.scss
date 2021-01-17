@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $header-height;
+  background-color: $white;
+  border-bottom: $border;
+
+  .btn-icon {
+    height: $header-height;
+  }
+
+  .input-bland {
+    max-width: 24rem;
+    width: 100%;
+  }
+}

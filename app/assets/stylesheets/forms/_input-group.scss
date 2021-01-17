@@ -1,0 +1,31 @@
+.input-group {
+  position: relative;
+
+  .input-bland {
+    padding-left: 30px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+.input-bland {
+  outline: none;
+  border: 0;
+  line-height: 20px;
+
+  &::placeholder {
+    color: $text-gray;
+  }
+}
+
+.input-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  padding-left: 8px;
+  color: $text-gray;
+}

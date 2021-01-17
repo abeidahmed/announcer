@@ -14,9 +14,12 @@
 
   <body>
     <%= render "shared/flash" %>
-    <%= render "sidebars/nav" %>
     <div class="flex">
-      <%= yield %>
+      <%= render "sidebars/nav" %>
+      <div class="flex-1">
+        <%= render "headers/app" %>
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
