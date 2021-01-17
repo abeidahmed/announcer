@@ -34,6 +34,18 @@
   }
 }
 
+// .h3 {
+//   font-size: $h3-size-mobile !important;
+
+//   @include breakpoint(md) {
+//     font-size: $h3-size !important;
+//   }
+// }
+
+.h4 {
+  font-size: $h4-size !important;
+}
+
 .h5 {
   font-size: $h5-size !important;
 }

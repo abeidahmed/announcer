@@ -1,0 +1,48 @@
+.sidebar {
+  height: 100vh;
+  width: 256px;
+  border-right: $border;
+  background-color: $bg-gray;
+}
+
+.sidebar-head {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+
+  .octicon {
+    color: $gray-500;
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    .octicon {
+      color: $gray-700;
+    }
+  }
+
+  > span {
+    color: $text-gray-dark;
+    line-height: 20px;
+    margin-left: 8px;
+  }
+
+  &[aria-selected='true'] {
+    > span {
+      font-weight: $font-weight-medium;
+      color: $text-indigo;
+    }
+
+    .octicon {
+      color: $text-indigo;
+    }
+  }
+}
