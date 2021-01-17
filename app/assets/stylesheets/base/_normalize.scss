@@ -56,8 +56,12 @@ body {
 }
 
 hr {
-  border-top-width: 1px;
+  height: 0;
+  border: 0;
+  background: transparent;
+  border-top: 1px solid;
   border-color: $border-gray;
+  margin: 16px 0;
 }
 
 img {
