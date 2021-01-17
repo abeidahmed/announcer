@@ -1,8 +1,8 @@
-<div class="overlay hidden lg:hidden"></div>
-<aside class="sidebar">
+<div data-sidebar-target="overlay" class="overlay hidden lg:hidden"></div>
+<aside data-sidebar-target="aside" class="sidebar">
   <div class="sidebar-head">
     <h1 class="h4">Applog space</h1>
-    <button type="button" class="sidebar-close">
+    <button type="button" data-action="sidebar#closeSidebar" class="sidebar-close">
       <%= octicon "x", fill: "currentColor", height: 24 %>
     </button>
   </div>
