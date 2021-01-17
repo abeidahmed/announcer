@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :memberships, dependent: :destroy
+  has_many :projects, through: :memberships
+
   has_secure_password
 
   before_validation :strip_email_address, :strip_full_name
