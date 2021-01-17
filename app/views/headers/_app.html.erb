@@ -1,13 +1,16 @@
 <header class="header p-responsive">
-  <div class="flex-1">
-    <div class="input-group">
+  <div class="flex items-center flex-1">
+    <button type="button" class="btn-icon lg:hidden">
+      <%= octicon "three-bars", fill: "currentColor" %>
+    </button>
+    <div class="input-group ml-2 lg:ml-0">
       <input type="text" class="input-bland" placeholder="Search for your projects...">
       <div class="input-icon">
         <%= octicon "search", fill: "currentColor" %>
       </div>
     </div>
   </div>
-  <div>
+  <div class="flex-shrink-0">
     <button type="button" class="btn-icon">
       <%= octicon "plus", fill: "currentColor" %>
     </button>
