@@ -10,16 +10,18 @@ RSpec.describe ProjectPolicy, type: :policy do
   end
 
   context "when project is free" do
-    let(:project) { create(:project) }
     subject { described_class.new(user, project) }
+
+    let(:project) { create(:project) }
 
     it { is_expected.to permit_mass_assignment_of(%i[name]).for_action(:update) }
     it { is_expected.to forbid_mass_assignment_of(%i[subdomain]).for_action(:update) }
   end
 
   context "when project is premium" do
-    let(:project) { create(:project, :premium) }
     subject { described_class.new(user, project) }
+
+    let(:project) { create(:project, :premium) }
 
     it { is_expected.to permit_mass_assignment_of(%i[name subdomain]).for_action(:update) }
   end
