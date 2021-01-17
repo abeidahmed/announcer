@@ -3,6 +3,10 @@ class ProjectPolicy < ApplicationPolicy
     user
   end
 
+  def update?
+    good_project_owner?
+  end
+
   def permitted_attributes_for_update
     if record.free?
       %i[name]

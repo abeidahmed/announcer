@@ -1,28 +1,53 @@
 require "rails_helper"
 
 RSpec.describe ProjectPolicy, type: :policy do
-  let(:user) { create(:user) }
-
-  context "when logged in" do
+  describe "user with states" do
     subject { described_class.new(user, Project.new) }
 
-    it { is_expected.to permit_actions(%i[create]) }
+    let(:user) { create(:user) }
+
+    context "when not logged in" do
+      include_examples "being_a_visitor"
+    end
+
+    context "when logged in" do
+      it { is_expected.to permit_actions(%i[create]) }
+    end
   end
 
-  context "when project is free" do
-    subject { described_class.new(user, project) }
+  describe "user with roles" do
+    subject { described_class.new(membership.user, membership.project) }
 
-    let(:project) { create(:project) }
+    context "when being an owner" do
+      let(:membership) { create(:membership, :owner) }
 
-    it { is_expected.to permit_mass_assignment_of(%i[name]).for_action(:update) }
-    it { is_expected.to forbid_mass_assignment_of(%i[subdomain]).for_action(:update) }
+      it { is_expected.to permit_actions(%i[update]) }
+    end
+
+    context "when being a editor" do
+      let(:membership) { create(:membership) }
+
+      it { is_expected.to forbid_actions(%i[update]) }
+    end
   end
 
-  context "when project is premium" do
+  describe "project with states" do
     subject { described_class.new(user, project) }
 
-    let(:project) { create(:project, :premium) }
+    let(:user) { create(:user) }
 
-    it { is_expected.to permit_mass_assignment_of(%i[name subdomain]).for_action(:update) }
+    context "when project is free" do
+      let(:project) { create(:project) }
+
+      it { is_expected.to permit_mass_assignment_of(%i[name]).for_action(:update) }
+
+      it { is_expected.to forbid_mass_assignment_of(%i[subdomain]).for_action(:update) }
+    end
+
+    context "when project is premium" do
+      let(:project) { create(:project, :premium) }
+
+      it { is_expected.to permit_mass_assignment_of(%i[name subdomain]).for_action(:update) }
+    end
   end
 end
