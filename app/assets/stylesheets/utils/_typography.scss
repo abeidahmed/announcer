@@ -63,3 +63,8 @@
 .text-center {
   text-align: center !important;
 }
+
+// Truncate
+.truncate {
+  @include truncate;
+}
