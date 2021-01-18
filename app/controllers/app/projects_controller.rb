@@ -19,7 +19,8 @@ class App::ProjectsController < App::BaseController
   end
 
   def edit
-    skip_authorization
+    @project = Project.find(params[:id])
+    authorize @project
   end
 
   def update
@@ -27,7 +28,7 @@ class App::ProjectsController < App::BaseController
     authorize project
 
     if project.update(permitted_attributes(project))
-      # do something
+      redirect_back fallback_location: edit_app_project_path(project), success: "OK, we got your changes"
     else
       render json: { errors: project.errors }, status: :unprocessable_entity
     end
