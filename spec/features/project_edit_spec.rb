@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "ProjectEdits", type: :feature do
+RSpec.describe "ProjectEdits", type: :feature do
   it "displays a success notification after updating the project" do
     membership = create(:membership, :owner)
     user = membership.user
