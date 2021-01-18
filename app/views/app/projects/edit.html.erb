@@ -3,7 +3,7 @@
     <h2 class="subhead-heading">General settings</h2>
     <p class="subhead-description">Update your project details. It may take upto 10 minutes for the changes to take place.</p>
   </div>
-  <%= render "settings_form" %>
+  <%= render "settings_form", model: [:app, @project] %>
 </div>
 <div class="mt-6">
   <div class="subhead">
