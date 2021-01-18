@@ -1,0 +1,14 @@
+.form-checkbox {
+  padding-left: 20px;
+  vertical-align: middle;
+
+  input[type='checkbox'] {
+    float: left;
+    margin-left: -20px;
+    margin-top: 4px;
+  }
+
+  label, .note {
+    margin: 0;
+  }
+}
