@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   namespace :app do
     resource :account_setup, only: %i[new create]
-    resources :projects, only: %i[index show create update]
+    resources :projects, only: %i[index show create edit update]
   end
 end

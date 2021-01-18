@@ -18,6 +18,10 @@ class App::ProjectsController < App::BaseController
     end
   end
 
+  def edit
+    skip_authorization
+  end
+
   def update
     project = Project.find(params[:id])
     authorize project

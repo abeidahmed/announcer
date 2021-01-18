@@ -1,0 +1,15 @@
+.subhead {
+  margin-bottom: $spacer-3;
+  border-bottom: $border;
+  padding-bottom: $spacer-2;
+}
+
+.subhead-heading {
+  font-size: $h3-size;
+  font-weight: $font-weight-medium;
+}
+
+.subhead-description {
+  font-size: $body-font-size;
+  color: $text-gray;
+}
