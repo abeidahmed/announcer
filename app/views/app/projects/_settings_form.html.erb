@@ -4,12 +4,17 @@
 %>
   <div class="form-group">
     <%= form.label :name, "Project name" %>
-    <%= form.text_field :name, class: "form-control" %>
+    <%= form.text_field :name, class: "form-control", autocomplete: "off", required: true, placeholder: "My project" %>
     <%= render "shared/form_error", error_type: "name" %>
   </div>
   <div class="form-group">
     <%= form.label :subdomain %>
-    <%= form.text_field :subdomain, class: "form-control" %>
+    <div class="flex items-center justify-between">
+      <%= form.text_field :subdomain, class: "form-control", autocomplete: "off", placeholder: "coolproject" %>
+      <button type="button" class="btn-link text-gray ml-3">
+        Remove
+      </button>
+    </div>
     <p class="note">This is where your posts are hosted. Eg: subdomain.yellit.space</p>
     <%= render "shared/form_error", error_type: "subdomain" %>
   </div>
