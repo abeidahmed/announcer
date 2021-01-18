@@ -21,12 +21,20 @@ RSpec.describe ProjectPolicy, type: :policy do
     context "when being an owner" do
       let(:membership) { create(:membership, :owner) }
 
-      it { is_expected.to permit_actions(%i[update]) }
+      it { is_expected.to permit_actions(%i[edit update]) }
     end
 
     context "when being a editor" do
       let(:membership) { create(:membership) }
 
+      it { is_expected.to permit_actions(%i[edit]) }
+      it { is_expected.to forbid_actions(%i[update]) }
+    end
+
+    context "when being an invited member" do
+      let(:membership) { create(:membership, :pending_owner) }
+
+      it { is_expected.to permit_actions(%i[edit]) }
       it { is_expected.to forbid_actions(%i[update]) }
     end
   end

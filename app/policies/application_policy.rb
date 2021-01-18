@@ -58,4 +58,8 @@ class ApplicationPolicy
   def good_project_member?(object: record)
     user.project_membership?(object) && user.project_invite_accepted?(object)
   end
+
+  def allow_but_redirect(object: record)
+    user.project_membership?(object)
+  end
 end

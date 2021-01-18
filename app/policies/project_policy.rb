@@ -3,6 +3,10 @@ class ProjectPolicy < ApplicationPolicy
     user
   end
 
+  def edit?
+    allow_but_redirect
+  end
+
   def update?
     good_project_owner?
   end
