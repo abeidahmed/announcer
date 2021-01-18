@@ -3,6 +3,10 @@
   min-height: 100vh !important;
 }
 
+.h-screen {
+  height: 100vh !important;
+}
+
 // Widths
 .max-w-sm {
   max-width: 24rem !important;
@@ -23,4 +27,13 @@
 // Border
 .border-b-0 {
   border-bottom: 0 !important;
+}
+
+// Overflow
+.overflow-y-hidden {
+  overflow-y: hidden !important;
+}
+
+.overflow-y-auto {
+  overflow-y: auto !important;
 }
