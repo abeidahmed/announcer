@@ -4,7 +4,7 @@
   border-right: $border;
   background-color: $bg-gray;
   position: fixed;
-  z-index: 100;
+  z-index: z(sidebar);
   display: none;
 
   &--active {

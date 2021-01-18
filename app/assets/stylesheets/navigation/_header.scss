@@ -7,7 +7,7 @@
   border-bottom: $border;
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: z(header);
 
   .btn-icon {
     height: $header-height;

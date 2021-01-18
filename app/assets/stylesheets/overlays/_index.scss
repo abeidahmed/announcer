@@ -1,5 +1,6 @@
 .overlay {
   position: fixed;
+  z-index: z(overlay);
   @include inset-full;
 
   background-color: $overlay;

@@ -1,0 +1,18 @@
+$z-indexes: (
+  overlay: 100,
+  modal: 120,
+  header: 90,
+  sidebar: 110,
+);
+
+@function z($name, $z: $z-indexes) {
+  @if map-has-key($z, $name) {
+    @return map-get($z, $name);
+  }
+  // Warn if no value is present
+  @else {
+    @error "No value is present in `#{$z}` of name `#{$name}`"
+  }
+
+  @return null;
+}
