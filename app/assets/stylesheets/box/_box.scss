@@ -2,6 +2,26 @@
   background-color: #fff;
   border: 1px solid $border-gray;
   border-radius: 6px;
+
+  > .box-row + .box-row {
+    border-top: $border;
+  }
+}
+
+.box-header {
+  border-bottom: $border;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+}
+
+.box-footer {
+  border-top: $border;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+
+.box-header, .box-footer, .box-body, .box-row {
+  padding: $spacer-3;
 }
 
 .box--spacious {

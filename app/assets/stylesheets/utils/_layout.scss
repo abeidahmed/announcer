@@ -8,6 +8,10 @@
   max-width: 24rem !important;
 }
 
+.max-w-md {
+  max-width: 416px !important;
+}
+
 .max-w-lg {
   max-width: 1024px !important;
 }
@@ -16,3 +20,7 @@
   width: 100% !important;
 }
 
+// Border
+.border-b-0 {
+  border-bottom: 0 !important;
+}

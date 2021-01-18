@@ -1,4 +1,20 @@
-<div class="subhead">
-  <h2 class="subhead-heading">General Settings</h2>
-  <p class="subhead-description">Update your project details. It may take upto 10 minutes for the changes to take place.</p>
+<div>
+  <div class="subhead">
+    <h2 class="subhead-heading">General settings</h2>
+    <p class="subhead-description">Update your project details. It may take upto 10 minutes for the changes to take place.</p>
+  </div>
+  <%= render "settings_form" %>
+</div>
+<div class="mt-6">
+  <div class="subhead">
+    <h2 class="subhead-heading">Public feed settings</h2>
+    <p class="subhead-description">Control how your public feed should behave.</p>
+  </div>
+  <%= render "public_feed_form" %>
+</div>
+<div class="mt-6">
+  <div class="subhead border-b-0 mb-0">
+    <h2 class="subhead-heading">Danger zone</h2>
+  </div>
+  <%= render "danger_action" %>
 </div>
