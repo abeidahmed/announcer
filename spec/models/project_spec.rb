@@ -14,8 +14,6 @@ RSpec.describe Project, type: :model do
 
     it { is_expected.to validate_length_of(:name).is_at_most(255) }
 
-    it { is_expected.to validate_presence_of(:subdomain).allow_nil }
-
     it { is_expected.to validate_length_of(:subdomain).is_at_most(63) }
 
     it { is_expected.to validate_uniqueness_of(:subdomain).case_insensitive }
