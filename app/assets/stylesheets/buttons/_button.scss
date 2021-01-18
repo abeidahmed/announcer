@@ -35,6 +35,19 @@
   }
 }
 
+.btn-danger.btn-outline {
+  color: $text-red;
+
+  &:hover {
+    background-color: $red-600;
+    color: $white;
+  }
+
+  &:focus {
+    box-shadow: $box-shadow-focus-danger;
+  }
+}
+
 .btn-block {
   width: 100%;
 }
