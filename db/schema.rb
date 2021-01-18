@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_01_17_153904) do
   enable_extension "plpgsql"
 
   create_table "memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "join_date", null: false
+    t.datetime "join_date"
     t.string "role", default: "editor", null: false
     t.uuid "project_id", null: false
     t.uuid "user_id", null: false
