@@ -28,7 +28,7 @@ class App::ProjectsController < App::BaseController
     authorize project
 
     if project.update(permitted_attributes(project))
-      redirect_back fallback_location: edit_app_project_path(project), success: "OK, we got your changes"
+      redirect_back_or_to edit_app_project_path(project), success: show_message_after(:update)
     else
       render json: { errors: project.errors }, status: :unprocessable_entity
     end
