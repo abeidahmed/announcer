@@ -1,0 +1,12 @@
+<div data-controller="toast" class="toast-container">
+<div data-toast-target="toast" class="toast toast--success">
+<div class="toast-content">
+<span class="toast-icon">
+<%= octicon "check-circle-fill", fill: "currentColor" %>
+</span>
+<p class="toast-message">Successfully invited</p>
+</div>
+<button type="button" data-action="toast#hide" class="toast-dismissButton"><%= octicon "x", fill: "currentColor" %></button>
+</div>
+</div>
+

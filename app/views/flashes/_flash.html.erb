@@ -1,3 +1,4 @@
-<% flash.to_hash.with_indifferent_access.each do |type, msg| %>
-  <p><%= msg %></p>
+<% flash.to_hash.with_indifferent_access.each do |type, flash_hash| %>
+  <%= render "flashes/toast", type: type, message: flash_hash[:message] %>
 <% end %>
+

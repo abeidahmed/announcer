@@ -1,0 +1,11 @@
+<div data-controller="toast" class="toast-container">
+  <div data-toast-target="toast" class="toast toast--<%= type %>">
+    <div class="toast-content">
+      <span class="toast-icon">
+        <%= octicon flash_icon_for(type), fill: "currentColor" %>
+      </span>
+      <p class="toast-message"><%= message %></p>
+    </div>
+    <button type="button" data-action="toast#hide" class="toast-dismissButton"><%= octicon "x", fill: "currentColor" %></button>
+  </div>
+</div>

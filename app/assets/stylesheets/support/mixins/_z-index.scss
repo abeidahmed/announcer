@@ -3,6 +3,7 @@ $z-indexes: (
   modal: 120,
   header: 90,
   sidebar: 110,
+  notification: 120,
 );
 
 @function z($name, $z: $z-indexes) {
