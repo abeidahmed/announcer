@@ -60,28 +60,28 @@
 
 // States
 .toast--success {
-  background-color: #DCFCE7;
-  border-color: #86EFAC;
+  background-color: $bg-green;
+  border-color: $border-green-light;
 
   .toast-icon {
-    color: #00CC63;
+    color: $green-500;
   }
 
   .toast-message {
-    color: #15803D;
+    color: $text-green-dark;
   }
 }
 
 .toast--alert {
-  background-color: #FEE2E2;
-  border-color: #FCA5A5;
+  background-color: $bg-red;
+  border-color: $border-red-light;
 
   .toast-icon {
-    color: #D73A49;
+    color: $red-500;
   }
 
   .toast-message {
-    color: #B91C1C;
+    color: $text-red-dark;
   }
 }
 
