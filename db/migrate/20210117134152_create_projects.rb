@@ -4,6 +4,7 @@ class CreateProjects < ActiveRecord::Migration[6.1]
       t.string :name, null: false, default: ""
       t.string :subdomain, default: ""
       t.string :plan_type, null: false, default: "free"
+      t.text :description, default: ""
 
       t.timestamps
     end

@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_01_17_153904) do
     t.string "name", default: "", null: false
     t.string "subdomain", default: ""
     t.string "plan_type", default: "free", null: false
+    t.text "description", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["plan_type"], name: "index_projects_on_plan_type"
