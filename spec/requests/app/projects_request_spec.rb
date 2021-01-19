@@ -5,7 +5,7 @@ RSpec.describe "App::Projects", type: :request do
     before { sign_in }
 
     it "creates a new project when all the fields are valid" do
-      post app_projects_path, params: { project: attributes_for(:project).except(:plan_type) }
+      post app_projects_path, params: { project: { name: "Title", description: "Project description" } }
 
       expect(Project.count).to eq(1)
     end

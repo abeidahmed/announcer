@@ -44,6 +44,6 @@ class App::ProjectsController < App::BaseController
   private
 
   def project_params
-    params.require(:project).permit(:name, :subdomain)
+    params.require(:project).permit(:name, :description)
   end
 end
