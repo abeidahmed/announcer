@@ -11,7 +11,7 @@ RSpec.describe ProjectPolicy, type: :policy do
     end
 
     context "when logged in" do
-      it { is_expected.to permit_actions(%i[create]) }
+      it { is_expected.to permit_actions(%i[new create]) }
     end
   end
 
