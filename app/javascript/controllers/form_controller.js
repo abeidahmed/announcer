@@ -2,7 +2,7 @@ import { Controller } from 'stimulus';
 import { formErrorHandler } from '../utils';
 
 export default class extends Controller {
-  static targets = ['showError', 'submitBtn']
+  static targets = ['showError', 'submitBtn'];
 
   async onError(e) {
     const formData = await e.detail.formSubmission;

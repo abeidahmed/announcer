@@ -1,7 +1,7 @@
 import ApplicationController from './application_controller';
 
 export default class extends ApplicationController {
-  static targets = ['toast']
+  static targets = ['toast'];
 
   connect() {
     if (this.pageIsTurboPreview) {
@@ -16,8 +16,9 @@ export default class extends ApplicationController {
   }
 
   hide() {
-    this.toastTarget.classList.replace('toast--animate-in', 'toast--animate-out');
+    this.toastTarget.classList.replace(
+      'toast--animate-in',
+      'toast--animate-out'
+    );
   }
 }
-
-
