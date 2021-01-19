@@ -13,9 +13,9 @@ class ProjectPolicy < ApplicationPolicy
 
   def permitted_attributes_for_update
     if record.free?
-      %i[name]
+      %i[name description]
     else
-      %i[name subdomain]
+      %i[name subdomain description]
     end
   end
 end

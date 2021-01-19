@@ -8,6 +8,7 @@ class Project < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :subdomain, uniqueness: { case_sensitive: false, allow_nil: true }, length: { maximum: 63 }
+  validates :description, length: { maximum: 500 }
 
   # TODO: Add subdomain regex for valid characters
 

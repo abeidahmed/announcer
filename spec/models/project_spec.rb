@@ -18,6 +18,8 @@ RSpec.describe Project, type: :model do
 
     it { is_expected.to validate_uniqueness_of(:subdomain).case_insensitive }
 
+    it { is_expected.to validate_length_of(:description).is_at_most(500) }
+
     it { is_expected.to define_enum_for(:plan_type).with_values(free: "free", premium: "premium").backed_by_column_of_type(:string) } # rubocop:disable Layout/LineLength
 
     it "stripe project name before saving" do
