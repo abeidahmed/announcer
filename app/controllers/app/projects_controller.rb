@@ -7,6 +7,13 @@ class App::ProjectsController < App::BaseController
     skip_authorization
   end
 
+  def new
+    @project = Project.new
+    authorize @project
+
+    render layout: "slate"
+  end
+
   def create
     project = Project.new(project_params)
     authorize project
