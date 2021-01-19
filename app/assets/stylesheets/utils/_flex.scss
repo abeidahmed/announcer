@@ -1,6 +1,7 @@
 $justify-contents: (
   center: center,
   between: space-between,
+  end: flex-end,
 );
 
 @each $breakpoint in map-keys($breakpoints) {
