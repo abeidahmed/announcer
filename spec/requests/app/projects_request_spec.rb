@@ -2,18 +2,53 @@ require "rails_helper"
 
 RSpec.describe "App::Projects", type: :request do
   describe "#create" do
-    before { sign_in }
+    let(:user) { create(:user) }
 
-    it "creates a new project when all the fields are valid" do
-      post app_projects_path, params: { project: { name: "Title", description: "Project description" } }
+    before { sign_in(user) }
 
-      expect(Project.count).to eq(1)
+    context "when all the fields are valid" do
+      it "creates a new project when all the fields are valid" do
+        post app_projects_path, params: { project: { name: "Title", description: "hello" } }
+
+        expect(Project.count).to eq(1)
+      end
+
+      it "adds the project creator to the team" do
+        post app_projects_path, params: { project: { name: "Title", description: "hello" } }
+
+        expect(Project.first.memberships.first.email_address).to eq(user.email_address)
+      end
+
+      it "adds the invitee to the project team if email_address is valid" do
+        post app_projects_path, params: { project: { name: "Title", description: "hello", invitee_email: "hello@example.com" } }
+        project = Project.first
+
+        expect(project.memberships.count).to eq(2)
+        expect(project.memberships.last.email_address).to eq("hello@example.com")
+      end
+
+      it "adds the invitee to the project team if user is member of app" do
+        invitee = create(:user)
+        post app_projects_path, params: { project: { name: "Title", description: "hello", invitee_email: invitee.email_address } }
+        project = Project.first
+
+        expect(project.memberships.count).to eq(2)
+        expect(project.memberships.last.email_address).to eq(invitee.email_address)
+      end
     end
 
-    it "returns error if the request is invalid" do
-      post app_projects_path, params: { project: attributes_for(:project).except(:plan_type, :name) }
+    context "when fields are not valid" do
+      it "returns error if project name is invalid" do
+        post app_projects_path, params: { project: attributes_for(:project).except(:plan_type, :name) }
 
-      expect(json.dig(:errors, :name)).to be_present
+        expect(json.dig(:errors, :name)).to be_present
+      end
+
+      it "returns error if invitee_email is invalid" do
+        post app_projects_path, params: { project: { name: "Title", description: "hello", invitee_email: "hello" } }
+
+        expect(json.dig(:errors, :invitee_email)).to be_present
+      end
     end
   end
 

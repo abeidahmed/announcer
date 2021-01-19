@@ -15,7 +15,7 @@ class App::ProjectsController < App::BaseController
   end
 
   def create
-    project = Project.new(project_params)
+    project = ProjectPersistor.new(project_params.merge({ current_user: current_user }))
     authorize project
 
     if project.save
@@ -23,6 +23,14 @@ class App::ProjectsController < App::BaseController
     else
       render json: { errors: project.errors }, status: :unprocessable_entity
     end
+    #project = Project.new(project_params)
+    #authorize project
+
+    #if project.save
+      ## do something
+    #else
+      #render json: { errors: project.errors }, status: :unprocessable_entity
+    #end
   end
 
   def edit
@@ -44,6 +52,6 @@ class App::ProjectsController < App::BaseController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description)
+    params.require(:project).permit(:name, :description, :invitee_email)
   end
 end
