@@ -20,6 +20,7 @@ class App::ProjectsController < App::BaseController
 
     if project.save
       project.memberships.create(user: current_user, role: "owner", invited: false)
+      redirect_to app_project_path(project)
     else
       render json: { errors: project.errors }, status: :unprocessable_entity
     end

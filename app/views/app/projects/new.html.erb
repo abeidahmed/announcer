@@ -1,28 +1,28 @@
 <%= render "templates/focused", title: "Create your project" do %>
-  <form action="" method="post" class="box-body">
-    <p class="text-gray">Let's start by filling out the project details.</p>
-    <div class="mt-2">
-      <div class="form-group">
-        <label for="">Project name</label>
-        <input type="text" class="form-control" placeholder="My cool project" name="" id="" value="">
-      </div>
-      <div class="form-group">
-        <label for="">Description <span class="f5 text-gray">(optional)</span></label>
-        <textarea name="" id="" rows="3" class="form-control" placeholder="Start typing here..."></textarea>
-      </div>
+  <%= form_with model: [:app, @project],
+    data: { controller: "form", action: "turbo:submit-end->form#onError" },
+    class: "box-body" do |form|
+  %>
+    <div class="form-group">
+      <%= form.label :name, "Project name" %>
+      <%= form.text_field :name,
+        class: "form-control",
+        placeholder: "My cool project",
+        autocomplete: "off",
+        required: true
+      %>
+      <%= render "shared/form_error", error_type: "name" %>
     </div>
-    <div class="mt-3">
-      <p class="text-gray">
-        Working alone isn’t fun. Invite your colleague and get started. Totally optional!
-      </p>
-      <div class="form-group mt-2">
-        <label for="">Colleague's email address</label>
-        <input type="email" class="form-control" placeholder="colleague@xyz.com" name="" id="" value="">
-      </div>
+    <div class="form-group">
+      <%= form.label :description do %>
+        Description <span class="f5 text-gray">(optional)</span>
+      <% end %>
+      <%= form.text_area :description, class: "form-control", rows: 3, placeholder: "Start typing here..." %>
+      <%= render "shared/form_error", error_type: "description" %>
     </div>
     <div class="form-group form-actions flex items-center justify-end">
-      <button type="button" class="btn">Cancel</button>
-      <button type="submit" class="btn btn-primary">Create</button>
+      <%= link_to "Cancel", :back, class: "btn" %>
+      <%= form.submit class: "btn btn-primary", data: { form_target: "submitBtn" } %>
     </div>
-  </form>
+  <% end %>
 <% end %>
