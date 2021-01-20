@@ -14,9 +14,12 @@
   background-color: $white;
   box-shadow: $box-shadow;
   outline: none;
+  color: $text-gray-dark;
+  transition: all 150ms ease-in-out;
 
   &:hover {
     color: $text-gray;
+    text-decoration: none;
   }
 
   &:focus {
