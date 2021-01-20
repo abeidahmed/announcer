@@ -6,7 +6,7 @@ class Membership < ApplicationRecord
 
   validates :user_id, uniqueness: { scope: :project_id, case_sensitive: false, message: "is already on the project team" } # rubocop:disable Layout/LineLength
 
-  delegate :email_address, to: :user
+  delegate :email_address, :full_name, to: :user
 
   def role=(role_type)
     default_role = role_type.presence || "editor"

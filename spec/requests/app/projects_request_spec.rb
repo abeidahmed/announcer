@@ -7,7 +7,7 @@ RSpec.describe "App::Projects", type: :request do
     before { sign_in(user) }
 
     context "when all the fields are valid" do
-      it "creates a new project when all the fields are valid" do
+      it "creates a new project" do
         post app_projects_path, params: { project: { name: "Title", description: "hello" } }
 
         expect(Project.count).to eq(1)
@@ -15,40 +15,19 @@ RSpec.describe "App::Projects", type: :request do
 
       it "adds the project creator to the team" do
         post app_projects_path, params: { project: { name: "Title", description: "hello" } }
+        membership = Project.first.memberships.first
 
-        expect(Project.first.memberships.first.email_address).to eq(user.email_address)
-      end
-
-      it "adds the invitee to the project team if email_address is valid" do
-        post app_projects_path, params: { project: { name: "Title", description: "hello", invitee_email: "hello@example.com" } }
-        project = Project.first
-
-        expect(project.memberships.count).to eq(2)
-        expect(project.memberships.last.email_address).to eq("hello@example.com")
-      end
-
-      it "adds the invitee to the project team if user is member of app" do
-        invitee = create(:user)
-        post app_projects_path, params: { project: { name: "Title", description: "hello", invitee_email: invitee.email_address } }
-        project = Project.first
-
-        expect(project.memberships.count).to eq(2)
-        expect(project.memberships.last.email_address).to eq(invitee.email_address)
+        expect(membership.email_address).to eq(user.email_address)
+        expect(membership.full_name).to eq(user.full_name)
+        expect(membership.role).to eq("owner")
+        expect(membership.join_date).to be_present
       end
     end
 
-    context "when fields are not valid" do
-      it "returns error if project name is invalid" do
-        post app_projects_path, params: { project: attributes_for(:project).except(:plan_type, :name) }
+    it "returns error if project name is invalid" do
+      post app_projects_path, params: { project: attributes_for(:project).except(:plan_type, :name) }
 
-        expect(json.dig(:errors, :name)).to be_present
-      end
-
-      it "returns error if invitee_email is invalid" do
-        post app_projects_path, params: { project: { name: "Title", description: "hello", invitee_email: "hello" } }
-
-        expect(json.dig(:errors, :invitee_email)).to be_present
-      end
+      expect(json.dig(:errors, :name)).to be_present
     end
   end
 
@@ -59,9 +38,12 @@ RSpec.describe "App::Projects", type: :request do
     before { sign_in(membership.user) }
 
     it "updates the project if the fields are valid" do
-      patch app_project_path(project), params: { project: { name: "hello world" } }
+      patch app_project_path(project), params: { project: { name: "Project name", description: "Description" } }
 
-      expect(project.reload.name).to eq("hello world")
+      project.reload
+
+      expect(project.name).to eq("Project name")
+      expect(project.description).to eq("Description")
     end
 
     it "returns error if the request is invalid" do

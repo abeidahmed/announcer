@@ -1,11 +1,13 @@
 class ProjectPersistor
   include ActiveModel::Model
 
-  attr_accessor :name, :description, :invitee_email, :current_user
+  attr_accessor :name, :description, :email_address, :full_name, :current_user
 
   validates :name, presence: true, length: { maximum: 255 }
+  validates :full_name, length: { maximum: 255 }
   validates :description, length: { maximum: 500 }
-  validates :invitee_email, length: { maximum: 255 }, format: { with: User::VALID_EMAIL_REGEX }, allow_blank: true
+  validates :email_address, length: { maximum: 255 }, format: { with: User::VALID_EMAIL_REGEX }, allow_blank: true
+  validate :person_uniqueness
 
   def self.model_name
     ActiveModel::Name.new(self, nil, "Project")
@@ -15,16 +17,16 @@ class ProjectPersistor
     @project ||= Project.create(name: name, description: description)
   end
 
-  def invite_invitee
+  def user
     @user ||= User.create_with(
-      full_name: "hello",
-      password: SecureRandom.urlsafe_base64
+      full_name: full_name,
+      password: SecureRandom.urlsafe_base64,
     ).find_or_initialize_by(email_address: invitee_email)
   end
 
   def save
     if valid?
-      project.memberships.create(user: current_user, role: "owner")
+      project.memberships.create(user: current_user, role: "owner", invited: false)
       invite_colleague
 
       true
@@ -36,6 +38,14 @@ class ProjectPersistor
   private
 
   def invite_colleague
-    project.memberships.create(user: invite_invitee, invited: true) if invite_invitee.valid?
+    Inviter.new(project, user: user) if user.valid?
+  end
+
+  def invitee_email
+    email_address.to_s.strip.downcase
+  end
+
+  def person_uniqueness
+    errors.add(:person, "is already on the team") if project.memberships.exists?(user_id: user.id)
   end
 end
